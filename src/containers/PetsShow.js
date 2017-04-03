@@ -13,9 +13,17 @@ const PetsShow = (props) => {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  return {
-    pet: {}
-  };
+  const pet = state.pets.find( (movie)=> movie.id == ownProps.routeParams.id)
+  if (pet) {
+    return {
+    pet: pet
+    };
+  }else{
+    return {
+      pet: {}
+    }
+  }
+
 };
 
 export default connect(mapStateToProps)(PetsShow);
